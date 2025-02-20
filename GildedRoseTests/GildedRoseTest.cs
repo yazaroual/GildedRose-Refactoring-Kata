@@ -191,4 +191,23 @@ public class GildedRoseTest
         Assert.Equal(-1, Items[0].SellIn);
     }
 
+    //Asserts that a backstage item never goes above 50
+    [Fact]
+    public void UpdateQuality_BackstagePassesItem_QualityNeverGoesAbove50()
+    {
+        IList<Item> Items = new List<Item> { new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 1, Quality = 49 } };
+        GildedRose app = new GildedRose(Items);
+
+        for (int i = 0; i < 1; i++)
+        {
+            app.UpdateQuality();
+        }
+
+        Assert.Single(Items);
+        Assert.Equal("Backstage passes to a TAFKAL80ETC concert", Items[0].Name);
+        //Asserts that quality is 50, as Quality was already at 49 and SellIn at 1, it should increase by 3
+        Assert.Equal(50, Items[0].Quality);
+        Assert.Equal(0, Items[0].SellIn);
+    }
+
 }

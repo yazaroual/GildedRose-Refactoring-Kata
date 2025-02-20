@@ -14,7 +14,9 @@ This readme and code comments will be in english as the code base and requiremen
 - **"Aged Brie"** actually increases in `Quality` the older it gets. Quality increases by 2 each day after SellIn.
 - **"Sulfuras"**, being a legendary item, never has to be sold or decreases in `Quality`. `SellIn` never decreases.
 - **"Backstage passes"**, like aged brie, increases in `Quality` as its `SellIn` value approaches;
-    - `Quality` increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
+    - `Quality` increases by 1 when there are more than 10 days
+    - `Quality` increases by 2 when there are 10 days or less 
+    - `Quality` increases by 3 when there are 5 days or less
     - `Quality` drops to 0 after the concert
 - **"Sulfuras"** is a legendary item and as such its Quality is 80 and it never alters.
 
@@ -37,5 +39,10 @@ This readme and code comments will be in english as the code base and requiremen
     * The scenario under which it's being tested.
     * The expected behavior when the scenario is invoked.
 4. Add additional unit tests to cover the solution before the refactoring. Approval tests will be kept to verify the output but I won't provide more text based test cases. As I added unit tests, I also discovered specifications that were not clearly documented. I updated the specifications chapter accordingly. Ex : **"Aged Brie"** quality increases by 2 each day after SellIn date was reached.
+5. Now that the current implementation is tested. We can start improving it to prepare the implementation of the new category.
+6. Using the tests, I refactored the `GildedRose` class without adding support for conjuring item.
+    a. Introduced an `ItemType` enum to get the item type based on item name
+    b. Extracted the logic of each item type in it's own function
+    c. Using a switch statement, call the correct function for each item type. This should allow us to easily add a new type. 
 
 
