@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace GildedRoseKata;
 
@@ -56,7 +55,6 @@ public class GildedRose
             item.Quality = item.Quality - 2;
         }
     }
-
 
     /// <summary>
     /// Update quality for normal items. Normal items degrade in quality by 1 each day

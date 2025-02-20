@@ -1,6 +1,7 @@
 # Gilded Rose in C# xUnit
 
-This readme and code comments will be in english as the code base and requirements were all in english.
+This is my solution to refactor the Gilded Rose Inventory program.
+This readme and code comments will be in english as the code base and requirements were in english.
 
 ## Initial System Specifications 
 
@@ -30,20 +31,28 @@ This readme and code comments will be in english as the code base and requiremen
 
 ## Workflow
 
+This is a step by step description of how I discovered and managed to refactor the code.
+
 1. Read trought the requirements 
-2. Read the code and add TODOs for the pain points in the GildedRose class :
+2. Write down what we know about the current system specifications. See [Initial System Specifications](#initial-system-specifications)
+3. Read the code and add TODOs for the pain points in the GildedRose class :
     a. Too many if/else statements, how to improve readability?
     b. Every check is based on the item name. Maybe we can introduce item types/categories ?
-3. Fix existing unit tests. We should test the items from the instance. Also rename it using the following convention :
+4. Fix existing unit tests. Also use the following naming convention for the tests:
     * The name of the method being tested.
     * The scenario under which it's being tested.
     * The expected behavior when the scenario is invoked.
-4. Add additional unit tests to cover the solution before the refactoring. Approval tests will be kept to verify the output but I won't provide more text based test cases. As I added unit tests, I also discovered specifications that were not clearly documented. I updated the specifications chapter accordingly. Ex : **"Aged Brie"** quality increases by 2 each day after SellIn date was reached.
-5. Now that the current implementation is tested. We can start improving it to prepare the implementation of the new category.
-6. Using the tests, I refactored the `GildedRose` class without adding support for conjuring item.
+5. Add additional unit tests to cover the solution before the refactoring. Approval tests will be kept to verify the output but I won't provide more text based test cases. As I added unit tests, I also discovered specifications that were not clearly documented. I updated the specifications chapter accordingly. Ex : **"Aged Brie"** quality increases by 2 each day after SellIn date was reached.
+6. Now that the current implementation is tested. And all tests are green. We can start improving the code to prepare the implementation of the new category.
+7. Using the tests, I refactored the `GildedRose` class without adding support for conjured item.
     a. Introduced an `ItemType` enum to get the item type based on item name
     b. Extracted the logic of each item type in it's own function
     c. Using a switch statement, call the correct function for each item type. This should allow us to easily add a new type.
-7. Added the `Conjured Items` category
+8. Added the `Conjured Items` category
+
+## What could be improved if I had more time
+
+- Clarify the requirements with Allison. For some items, we update the quality, then the SellIn date then we re-update the quality again. I kept it as is to not break the current system but that could be discussed with the owner and simplified.
+- Right now the Item Type is based on the item name, it can cause errors if there is a typo. We could add specific classes for each type of items, all would inherit from the `Item` class. That would be cleaner.
 
 

@@ -7,7 +7,7 @@ namespace GildedRoseTests;
 public class GildedRoseTest
 {
 
-    // Add more tests for : 
+    // Test coverage : 
     // - At the end of each day lower values for Quality and Sellin - Across 30 days
     // - When the sell by date has passed, Quality degrades twice as fast
     // - The Quality of an item is never negative
@@ -111,7 +111,6 @@ public class GildedRoseTest
         Assert.Equal(20, Items[0].Quality);
         Assert.Equal(-9, Items[0].SellIn);
     }
-
 
     [Fact]
     public void UpdateQuality_AgedBrieItem_QualityNeverGoesAbove50()
