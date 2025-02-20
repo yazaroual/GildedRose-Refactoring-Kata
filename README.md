@@ -9,13 +9,13 @@ This readme and code comments will be in english as the code base and requiremen
 - At the end of each day our system lowers both values for every item
 - Once the sell by date has passed, `Quality` degrades twice as fast
 - The `Quality` of an item is never negative
-- **"Aged Brie"** actually increases in `Quality` the older it gets
 - The `Quality` of an item is never more than 50
-- **"Sulfuras"**, being a legendary item, never has to be sold or decreases in `Quality`
+- An item can never have its Quality increase above 50
+- **"Aged Brie"** actually increases in `Quality` the older it gets. Quality increases by 2 each day after SellIn.
+- **"Sulfuras"**, being a legendary item, never has to be sold or decreases in `Quality`. `SellIn` never decreases.
 - **"Backstage passes"**, like aged brie, increases in `Quality` as its `SellIn` value approaches;
     - `Quality` increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
     - `Quality` drops to 0 after the concert
-- An item can never have its Quality increase above 50
 - **"Sulfuras"** is a legendary item and as such its Quality is 80 and it never alters.
 
 
@@ -36,6 +36,6 @@ This readme and code comments will be in english as the code base and requiremen
     * The name of the method being tested.
     * The scenario under which it's being tested.
     * The expected behavior when the scenario is invoked.
-
+4. Add additional unit tests to cover the solution before the refactoring. Approval tests will be kept to verify the output but I won't provide more text based test cases. As I added unit tests, I also discovered specifications that were not clearly documented. I updated the specifications chapter accordingly. Ex : **"Aged Brie"** quality increases by 2 each day after SellIn date was reached.
 
 
