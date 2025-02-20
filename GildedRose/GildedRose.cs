@@ -13,8 +13,10 @@ public class GildedRose
 
     public void UpdateQuality()
     {
+        //TODO : Too many if/else statements, how to improve readability?
         for (var i = 0; i < Items.Count; i++)
         {
+            //TODO : Every check is based on the item name. Maybe we can introduce item types/categories ?
             if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
             {
                 if (Items[i].Quality > 0)
