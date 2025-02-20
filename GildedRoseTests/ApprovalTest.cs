@@ -14,9 +14,9 @@ namespace GildedRoseTests;
 public class ApprovalTest
 {
     [Fact]
-    public Task Foo()
+    public Task UpdateQuality_SingleItem_UpdatesSellInAndQuality()
     {
-        Item[] items = { new Item { Name = "foo", SellIn = 0, Quality = 0 } };
+        Item[] items = { new Item { Name = "foo", SellIn = 2, Quality = 2 } };
         GildedRose app = new GildedRose(items);
         app.UpdateQuality();
         

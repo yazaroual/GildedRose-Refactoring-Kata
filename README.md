@@ -32,4 +32,10 @@ This readme and code comments will be in english as the code base and requiremen
 2. Read the code and add TODOs for the pain points in the GildedRose class :
     a. Too many if/else statements, how to improve readability?
     b. Every check is based on the item name. Maybe we can introduce item types/categories ?
+3. Fix existing unit tests. We should test the items from the instance. Also rename it using the following convention :
+    * The name of the method being tested.
+    * The scenario under which it's being tested.
+    * The expected behavior when the scenario is invoked.
+
+
 
