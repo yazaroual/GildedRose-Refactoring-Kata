@@ -29,8 +29,6 @@ public class GildedRoseTest
         Assert.Equal(1, Items[0].SellIn);
     }
 
-
-
     [Fact]
     public void UpdateQuality_SingleItem_UpdatesSellInAndQualityFor30Days()
     {
@@ -133,7 +131,6 @@ public class GildedRoseTest
         Assert.Equal(-1, Items[0].SellIn);
     }
 
-    //Sulfuras never deacreases in quality
     [Fact]
     public void UpdateQuality_SulfurasItem_QualityAndSellInNeverDecreases()
     {
@@ -152,7 +149,6 @@ public class GildedRoseTest
         Assert.Equal(1, Items[0].SellIn);
     }
 
-    // - "Backstage passes", increases in Quality as its SellIn value approaches; Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but Quality drops to 0 after the concert
     [Fact]
     public void UpdateQuality_BackstagePassesItem_QualityIncreasesBasedOnSellInDate()
     {
@@ -191,7 +187,6 @@ public class GildedRoseTest
         Assert.Equal(-1, Items[0].SellIn);
     }
 
-    //Asserts that a backstage item never goes above 50
     [Fact]
     public void UpdateQuality_BackstagePassesItem_QualityNeverGoesAbove50()
     {
@@ -210,4 +205,40 @@ public class GildedRoseTest
         Assert.Equal(0, Items[0].SellIn);
     }
 
+    [Fact]
+    public void UpdateQuality_ConjuredItem_QualityDecreasesTwiceAsFastBeforeSellIn()
+    {
+        IList<Item> Items = new List<Item> { new Item { Name = "Conjured Item", SellIn = 2, Quality = 10 } };
+        GildedRose app = new GildedRose(Items);
+
+        for (int i = 0; i < 2; i++)
+        {
+            app.UpdateQuality();
+        }
+
+        Assert.Single(Items);
+        Assert.Equal("Conjured Item", Items[0].Name);
+        Assert.Equal(6, Items[0].Quality);
+        Assert.Equal(0, Items[0].SellIn);
+
+    }
+
+    [Fact]
+    public void UpdateQuality_ConjuredItem_QualityDecreasesTwiceAsFastAfterSellIn()
+    {
+        IList<Item> Items = new List<Item> { new Item { Name = "Conjured Item", SellIn = -1, Quality = 10 } };
+        GildedRose app = new GildedRose(Items);
+
+        for (int i = 0; i < 2; i++)
+        {
+            app.UpdateQuality();
+        }
+
+        Assert.Single(Items);
+        Assert.Equal("Conjured Item", Items[0].Name);
+        //Should decrease by 4 and 4
+        Assert.Equal(2, Items[0].Quality);
+        Assert.Equal(-3, Items[0].SellIn);
+
+    }
 }

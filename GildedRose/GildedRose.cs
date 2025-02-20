@@ -28,9 +28,9 @@ public class GildedRose
                 case ItemType.LegendaryItem:
                     //Nothing changes for legendary items
                     break;
-                // case ItemType.ConjuredItem:
-                //     UpdateConjuredItem(Items[i]);
-                //     break;
+                case ItemType.ConjuredItem:
+                    UpdateConjuredItem(Items[i]);
+                    break;
                 default:
                     //By default everything is a normal item
                     UpdateNormalItem(Items[i]);
@@ -38,6 +38,25 @@ public class GildedRose
             }
         }
     }
+
+    /// <summary>
+    /// Update quality for conjured items. Conjured items degrade in quality twice as fast as normal items
+    /// </summary>
+    private void UpdateConjuredItem(Item item)
+    {
+        if (item.Quality > 0)
+        {
+            item.Quality = item.Quality - 2;
+        }
+
+        item.SellIn = item.SellIn - 1;
+
+        if (item.Quality > 0 && item.SellIn < 0)
+        {
+            item.Quality = item.Quality - 2;
+        }
+    }
+
 
     /// <summary>
     /// Update quality for normal items. Normal items degrade in quality by 1 each day

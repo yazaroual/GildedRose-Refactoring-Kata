@@ -22,11 +22,11 @@ This readme and code comments will be in english as the code base and requiremen
 
 
 ## Requirements
-- [ ] Add "Conjured" items to the system
-- [ ] "Conjured" items degrade in Quality twice as fast as normal items
-- [ ] Do not alter the Item class or Items property
-- [ ] Add unit tests
-- [ ] Pass Approval tests
+- [x] Add "Conjured" items to the system
+- [x] "Conjured" items degrade in Quality twice as fast as normal items
+- [x] Do not alter the Item class or Items property
+- [x] Add unit tests
+- [x] Pass Approval tests
 
 ## Workflow
 
@@ -43,6 +43,7 @@ This readme and code comments will be in english as the code base and requiremen
 6. Using the tests, I refactored the `GildedRose` class without adding support for conjuring item.
     a. Introduced an `ItemType` enum to get the item type based on item name
     b. Extracted the logic of each item type in it's own function
-    c. Using a switch statement, call the correct function for each item type. This should allow us to easily add a new type. 
+    c. Using a switch statement, call the correct function for each item type. This should allow us to easily add a new type.
+7. Added the `Conjured Items` category
 
 
